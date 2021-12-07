@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1"/>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/CSS/layout.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">
+            <a href="Index">
+                <img src="~/Images/logo.png" width="164px" height="125px" />
+            </a>
+        </div>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <a href="Menu">
+                        <li>MENU</li>
+                    </a>
+                    <li>LOCATION</li>
+                    <li>|</li>
+                    <li>CONTACT</li>
+                    <li>|</li>
+                    <li>LOG IN</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="social">
+        <div class="facebook">
+            <img src="~/Images/facebook.png" width="45px" height="45px" />
+        </div>
+        <div class="instagram">
+            <img src="~/Images/instagram.png" width="45px" height="45px" />
+        </div>
+        <div class="twitter">
+            <img src="~/Images/twitter.png" width="45px" height="45px" />
+        </div>
+    </div>
+    @RenderBody()
+<footer>
+    <div class="spacermiddle"></div>
+    <div class="footersocial">
+        <div class="footer-fb">
+            <img src="~/Images/facebook.png" width="35px" height="35px" />
+            <p> - Facebook Link</p>
+        </div>
+        <div class="footer-ig">
+            <img src="~/Images/instagram.png" width="35px" height="35px" />
+            <p> - Instagram Link</p>
+        </div>
+        <div class="footer-tt">
+            <img src="~/Images/twitter.png" width="35px" height="35px" />
+            <p> - Twitter Link</p>
+        </div>
+    </div>
+    <div class="footercontact">
+        <p>Contact Us</p>
+        <div class="footer-mail">
+            <img src="~/Images/email.png" width="35px" height="35px" />
+            <p> - restaurant@email.com</p>
+        </div>
+        <div class="footer-phone">
+            <img src="~/Images/phone.png" width="35px" height="35px" />
+            <p> - +447700000000</p>
+        </div>
+    </div>
+    <div class="spacerright"></div>
+    <div class="googlemaps">
+        <p>Google Maps Location Pin</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.979677128564!2d-2.902007984167059!3d53.20028067994866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487add4c5264e8f9%3A0xb15819ede08133ab!2sUniversity%20of%20Chester!5e0!3m2!1sen!2suk!4v1638541959009!5m2!1sen!2suk" width="333" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</footer>
+</body>
+</html>

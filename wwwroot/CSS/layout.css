@@ -1,0 +1,447 @@
+﻿
+/*Removes any scrollbar on the website*/
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    height: 1490px;
+    max-height: 1490px;
+    background: rgba(0,0,0,0.98) url('Images/background.jpg') no-repeat fixed center;
+}
+
+.background {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+/*Changes the colour of selected/highlighted text my mouse drag*/
+::-moz-selection { /* Code for Firefox */
+    color: black;
+    background: red;
+}
+/*Same as the block above*/
+::selection {
+    color: black;
+    background: red;
+}
+/*Makes the user unable to select/highlight images with a mouse drag*/
+img {
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------Navigation--------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*Responsible for the navigation bar on the top of the website. A container that stores the logo, hyperlinks and social media links*/
+.top-bar {
+    height: 200px;
+    max-height: 200px;
+    background-color: rgba(255,255,255,0);
+    z-index: 0;
+    float: none;
+    margin: auto;
+}
+
+.logo {
+    float: left;
+    display: inline-block;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+    transition: transform 0.15s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); 
+    transition: transform 0.15s ease-in-out;
+}
+
+/*Responsible for the navigation bar on the top of the website. A container that stores hyperlinks*/
+nav {
+    display: inline-block;
+    position: absolute; 
+    margin: 0 auto;
+}
+
+.menu {
+    margin-right: 222px;
+    position: relative;
+    transform: translate(408px,20px);
+    transition: transform 0.15s ease-in-out;
+}
+
+@media only screen and (max-width: 1450px) {
+    .menu {
+        transform: translate(0px,20px);
+        transition: transform 0.15s ease-in-out;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .menu {
+        transform: translate(0px,39px);
+        transition: transform 0s ease-in-out;
+    }
+}
+
+
+
+
+/*Hyperlinks made by the use of bullet points and lists*/
+.menu ul li {
+    position: relative;
+    margin: 0 auto;
+    float: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2px 5px 2px 5px;
+    transition: ease-in-out 0.15s;
+    margin-left: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+}
+
+.menu ul li:hover {
+    color: #FFF;
+}
+
+.menu ul li:before {
+    content: "";
+    position: absolute;
+    float: none;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFF;
+    transform: scaleX(0);
+    transition: transform 0.15s ease-in-out;
+}
+
+.menu ul li:hover::before {
+    transform: scaleX(1);
+}
+
+.menu ul li:nth-child(3) {
+    font-size: 42px;
+    font-weight: 100;
+    text-decoration: none;
+    transform: translate(0,6px);
+}
+
+.menu ul li:nth-child(3):before {
+    transform: scaleX(1);
+    width: 0;
+    text-decoration: none;
+}
+
+.menu ul li:nth-child(3):hover {
+}
+
+@media only screen and (max-width: 800px) {
+    .menu ul li:nth-child(3) {
+        display: none;
+    }
+}
+
+.menu a:visited{
+    color: rgba(0,0,0,0);
+}
+
+.menu ul li:nth-child(5) {
+    font-size: 42px;
+    font-weight: 100;
+    text-decoration: none;
+    transform: translate(0,6px);
+}
+
+.menu ul li:nth-child(5):before {
+    transform: scaleX(1);
+    width: 0;
+    text-decoration: none;
+}
+
+.menu ul li:nth-child(5):hover {
+}
+
+@media only screen and (max-width: 1000px) {
+    .menu ul li:nth-child(5) {
+        display: none;
+    }
+}
+
+
+
+/*-------------------------------Social Media Logos Located in the Top Right corner of the website*/
+.social {
+    float: right;
+    display: inline-block;
+    margin-right: 35px;
+    transform: translate(0px,-155px);
+    opacity: 1;
+    transition: transform 0.15s ease-in-out;
+}
+
+@media only screen and (max-width: 666px) {
+    .social {
+        display: none;
+    }
+}
+
+.facebook {
+    display: inline-block;
+    transition: transform 0.15s ease-in-out;
+}
+.facebook:hover {
+    transform: scale(1.2);
+    transition: transform 0.15s ease-in-out;
+}
+.instagram {
+    margin-left: 20px;
+    display: inline-block;
+    transition: transform 0.15s ease-in-out;
+}
+.instagram:hover {
+    transform: scale(1.2);
+    transition: transform 0.15s ease-in-out;
+}
+.twitter {
+    margin-left: 20px;
+    display: inline-block;
+    transition: transform 0.15s ease-in-out;
+}
+.twitter:hover {
+    transform: scale(1.2);
+    transition: transform 0.15s ease-in-out;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------Footer-----------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Footer- the bottom of the website. Stores mostly copyright info, social media links, short links and a google maps embed*/
+footer {
+    position: absolute;
+    bottom: -110px;
+    margin-bottom: -460px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.98);
+    height: auto;
+    border-top: 45px solid rgba(0,0,0,0.98);
+    border-bottom: 35px solid rgba(0,0,0,0.98);
+}
+
+.spacermiddle {
+    float: left;
+    margin-left: 980px;
+    height: 330px;
+    width: 2px;
+    transform: translate(0,-7px);
+    background-color: rgba(255,255,255,1);
+}
+
+@media only screen and (max-width: 1800px) {
+    .spacermiddle {
+        display: none;
+    }
+}
+
+.footersocial {
+    float: left;
+    border-radius: 15px;
+    margin-left: -298px;
+    border: 2px solid #FFF;
+    padding: 10px 10px 10px 10px;
+    width: 333px;
+    height: 122px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    transform: translate(357px,0);
+}
+
+.footer-fb {
+    transition: ease-in-out 0.15s;
+    margin-bottom: 6px;
+}
+
+.footer-fb p {
+    float: right;
+    color: white;
+    display: inline-block;
+    margin-right: 180px;
+    margin-bottom: 0px;
+    transform: translate(0px,-5px);
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+}
+
+.footer-fb:hover {
+    transform: scale(1.1) translate(13px,0px);
+    transition: ease-in-out 0.15s;
+}
+
+.footer-ig {
+    margin-bottom: 6px;
+    transition: ease-in-out 0.15s;
+}
+
+.footer-ig p {
+    float: right;
+    color: white;
+    display: inline-block;
+    margin-right: 177px;
+    margin-bottom: 0px;
+    transform: translate(0px,-5px);
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+}
+
+.footer-ig:hover {
+    transition: ease-in-out 0.15s;
+    transform: scale(1.1) translate(13px,0);
+}
+
+
+.footer-tt {
+    transition: ease-in-out 0.15s;
+}
+
+.footer-tt p {
+    float: right;
+    color: white;
+    display: inline-block;
+    margin-right: 200px;
+    margin-bottom: 0px;
+    transform: translate(0px,-5px);
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+}
+
+.footer-tt:hover {
+    transition: ease-in-out 0.15s;
+    transform: scale(1.1) translate(13px,0);
+}
+
+.footercontact {
+    float: left;
+    border-radius: 15px;
+    margin-top: 168px;
+    border: 2px solid #FFF;
+    padding: 10px 10px 10px 10px;
+    width: 333px;
+    height: 122px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+}
+
+.footercontact p {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-align: center;
+    
+}
+
+.footer-mail {
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+.footer-mail p {
+    float: right;
+    color: white;
+    display: inline-block;
+    margin-right: 122px;
+    margin-bottom: 0px;
+    transform: translate(0px,7px);
+}
+
+.footer-phone {
+    margin-bottom: 6px;
+}
+
+.footer-phone p {
+    float: right;
+    color: white;
+    display: inline-block;
+    margin-right: 160px;
+    margin-bottom: 0px;
+    transform: translate(0px,7px);
+}
+
+.spacerright {
+    float: left;
+    margin-left: 50px;
+    margin-right: 0;
+    height: 330px;
+    width: 2px;
+    transform: translate(0,-7px);
+    background-color: rgba(255,255,255,1);
+}
+
+@media only screen and (max-width: 1852px) {
+    .spacerright {
+        display:none;
+    }
+
+}
+
+.googlemaps {
+    float: right;
+    margin-right: 45px;
+    border-radius: 15px;
+    border: 2px solid #FFF;
+    padding: 0px 10px 5px 10px;
+}
+
+.googlemaps p {
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 837px) {
+    .googlemaps {
+        float:left;
+        margin-left: 59px;
+    }
+}
+
+
+
+
