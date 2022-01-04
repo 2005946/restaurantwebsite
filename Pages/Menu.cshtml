@@ -8,6 +8,62 @@
 <link rel="stylesheet" href="~/CSS/menu.css">
 
 <div id="container">
-
+    <h2>Search</h2>
+    <form method="post">
+        <div class="search">
+            <input asp-for="Search" />
+        </div>
+        <button type="submit" asp-page-handler="Search">Search</button>
+    </form>
+    <table class="menutable">
+        <tbody>
+            @foreach (var menu in Model.tblMenu)
+            {
+                <tr>
+                    <td>@menu.mealName</td>
+                    @{
+                        try
+                        {
+                            <td>
+                                <img class="mealImage" src="@string.Format("data:Image/jpg;base64,{0}",Convert.ToBase64String(menu.ImageData))" , alt="@menu.ImageDescription" />
+                            </td>
+                        }
+                        catch
+                        {
+                            <td>
+                                <img class="emptyimage" src="~/Images/empty.png" alt="No Image available" />
+                            </td>
+                        }
+                    }
+                    <td>@menu.mealIngredients</td>
+                    @if (menu.mealIsGlutenFree == true)
+                    {
+                        <td>Gluten Free</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (menu.mealIsVegan == true)
+                    {
+                        <td>Suitable for Vegans</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (menu.mealContainsNuts == true)
+                    {
+                        <td>Contains Nuts</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td>£@menu.mealPrice.ToString("0.00")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 

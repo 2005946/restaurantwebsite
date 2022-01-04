@@ -6,8 +6,8 @@ html::-webkit-scrollbar {
 
 body {
     margin: 0;
-    height: 1490px;
-    max-height: 1490px;
+    height: auto;
+    max-height: auto;
     background: rgba(0,0,0,0.98) url('Images/background.jpg') no-repeat fixed center;
 }
 
@@ -33,7 +33,6 @@ body {
 img {
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
@@ -117,7 +116,6 @@ nav {
     color: #FFF;
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
@@ -238,19 +236,21 @@ nav {
     transition: transform 0.15s ease-in-out;
 }
 
+main{
+    margin-bottom:  449px;
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------Footer-----------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*Footer- the bottom of the website. Stores mostly copyright info, social media links, short links and a google maps embed*/
 footer {
-    position: absolute;
-    bottom: -110px;
-    margin-bottom: -460px;
+    position: static;
     width: 100%;
     background-color: rgba(0,0,0,0.98);
     height: auto;
-    border-top: 45px solid rgba(0,0,0,0.98);
-    border-bottom: 35px solid rgba(0,0,0,0.98);
+    border-top: 45px solid rgba(0,0,0,0);
+    border-bottom: 45px solid rgba(0,0,0,0.95);
 }
 
 .spacermiddle {
@@ -296,7 +296,6 @@ footer {
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
@@ -320,7 +319,6 @@ footer {
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
@@ -344,7 +342,6 @@ footer {
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
@@ -422,10 +419,11 @@ footer {
 }
 
 .googlemaps {
-    float: right;
-    margin-right: 45px;
+    position: relative;
+    margin-left: 1518px;
     border-radius: 15px;
     border: 2px solid #FFF;
+    width: 333px;
     padding: 0px 10px 5px 10px;
 }
 
@@ -437,8 +435,9 @@ footer {
 
 @media only screen and (max-width: 837px) {
     .googlemaps {
-        float:left;
+        position: relative;
         margin-left: 59px;
+        
     }
 }
 

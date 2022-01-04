@@ -8,14 +8,14 @@
 <body>
     <div class="top-bar">
         <div class="logo">
-            <a href="Index">
+            <a asp-page="/Index">
                 <img src="~/Images/logo.png" width="164px" height="125px" />
             </a>
         </div>
         <nav>
             <div class="menu">
                 <ul>
-                    <a href="Menu">
+                    <a asp-page="/Menu">
                         <li>MENU</li>
                     </a>
                     <li>LOCATION</li>
@@ -38,7 +38,9 @@
             <img src="~/Images/twitter.png" width="45px" height="45px" />
         </div>
     </div>
-    @RenderBody()
+    <main>
+        @RenderBody()
+    </main>
 <footer>
     <div class="spacermiddle"></div>
     <div class="footersocial">
