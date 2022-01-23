@@ -1,0 +1,32 @@
+﻿@page
+@model RestaurantWebsite.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/CSS/menu.css">
+
+<div id="container">
+    <h2>Log in</h2>
+    <hr />
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <div class="email">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" />
+            <span asp-validation-for="Input.Email"></span>
+        </div>
+        <div class="password">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" />
+            <span asp-validation-for="Input.Password"></span>
+        </div>
+        <div class="newuser">
+            <p>New customer? Create a <a asp-page="/Account/Register">new account</a></p>
+        </div>
+        <div class="login">
+            <button type="submit">Log in</button>
+        </div>
+    </form>
+</div>

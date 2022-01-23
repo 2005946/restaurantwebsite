@@ -1,0 +1,41 @@
+﻿@page
+@model RestaurantWebsite.Pages.Account.UserModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+
+@using Microsoft.AspNetCore.Identity
+@using RestaurantWebsite.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<link rel="stylesheet" href="~/CSS/menu.css">
+
+<div id="container">
+    <h2>User page</h2>
+    <hr />
+        <div class="username">
+            <label><b>Username/Email:</b> @UserManager.GetUserName(User)</label>
+        </div>
+        <div class="userrole">
+            @if(User.IsInRole("Admin")){
+            <label>
+                <b>User Role: </b>Admin
+            </label>
+            }
+            @if(!User.IsInRole("Admin") && !User.IsInRole("Member")){
+            <label>
+                <b>User Role: </b>Member
+            </label>
+            }
+
+
+        </div>
+        <form method="post">
+            <div class="logout">
+                <button type="submit">Logout</button>
+            </div>
+        </form>
+</div>

@@ -1,4 +1,4 @@
-﻿@page "{id:int}"
+﻿@page "{mealID:int}"
 @model RestaurantWebsite.Pages.Admin.EditModel
 @{
     ViewData["Title"] = "Edit";
@@ -11,6 +11,8 @@
     <h2>Edit Item - @Model.menu.mealName</h2>
     <form method="post" enctype="multipart/form-data">
         <input asp-for="menu.mealID" type="hidden" />
+        <input asp-for="menu.Active" type ="hidden">
+
         <div asp-validation-summary="All"></div>
         <div>Meal Name: <input asp-for="menu.mealName" /></div>
         <div>Meal Ingredients: <input asp-for="menu.mealIngredients" /></div>

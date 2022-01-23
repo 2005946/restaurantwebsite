@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,10 @@ using RestaurantWebsite.wwwroot.Data;
 
 namespace RestaurantWebsite.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class MenuModel : PageModel
     {
+        
         private AppDbContext _db;
 
         public IList<menu> tblMenu { get; private set; }
@@ -44,7 +47,23 @@ namespace RestaurantWebsite.Pages.Admin
             {
                 throw new Exception($"Item {menu.mealID} could not be updated", e);
             }
-            return Page();
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostActivateAsync(int mealID)
+        {
+            var menu = await _db.tblMenu.FindAsync(mealID);
+            menu.Active = true;
+            _db.Attach(menu).State = EntityState.Modified;
+            try
+            {
+                await _db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new Exception($"Item {menu.mealID} could not be updated", e);
+            }
+            return RedirectToPage();
         }
 
     }

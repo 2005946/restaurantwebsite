@@ -1,5 +1,5 @@
 ﻿@page
-@model RestaurantWebsite.Pages.MenuModel
+@model RestaurantWebsite.Pages.Admin.MenuModel
 @{
     ViewData["Title"] = "Menu";
     Layout = "~/Pages/_Layout.cshtml";
@@ -14,6 +14,7 @@
         <button type="submit" asp-page-handler="Search">Search</button>
         <table class="menutable">
             <tbody>
+
                 @foreach (var menu in Model.tblMenu)
                 {
                     <tr>
@@ -60,8 +61,15 @@
                         <td>£@menu.mealPrice.ToString("0.00")</td>
                         <td>@menu.Active</td>
                         <td>
-                            <a asp-page="/Admin/Edit" asp-route-id="@menu.mealID">Edit</a>
-                            <button type="submit" asp-page-handler="Delete" asp-route-mealID="@menu.mealID">Delete</button>
+                            <a asp-page="/Admin/Edit" asp-route-mealID="@menu.mealID">Edit</a>
+                            @if (menu.Active == true)
+                            {
+                                <button type="submit" asp-page-handler="Delete" asp-route-mealID="@menu.mealID">Delete</button>
+                            }
+                            else
+                            {
+                                <button type="submit" asp-page-handler="Activate" asp-route-mealID="@menu.mealID">Activate</button>
+                            }
                         </td>
                     </tr>
                 }

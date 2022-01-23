@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RestaurantWebsite.wwwroot.Data;
 
 namespace RestaurantWebsite.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class createModel : PageModel
     {
         private AppDbContext _db;

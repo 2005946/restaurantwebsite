@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using RestaurantWebsite.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1"/>
@@ -15,27 +20,56 @@
         <nav>
             <div class="menu">
                 <ul>
-                    <a asp-page="/Menu">
-                        <li>MENU</li>
+                    @if(User.IsInRole("Admin")){
+                    <a asp-page="/Admin/Menu">
+                    <li>MENU</li>
                     </a>
+                    }
+                    @if(User.IsInRole("Member")){
+                    <a asp-page="/Menu">
+                    <li>MENU</li>
+                    </a>
+                    }
+                    @if(!User.IsInRole("Admin") && !User.IsInRole("Member")){
+                    <a asp-page="/Menu">
+                    <li>MENU</li>
+                    </a>
+                    }
                     <li>LOCATION</li>
                     <li>|</li>
                     <li>CONTACT</li>
                     <li>|</li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                    <a asp-page="/Account/User">
+                    <li>@UserManager.GetUserName(User)</li>
+                    </a>
+                    }
+                    else
+                    {
+                    <a asp-page="/Account/Login">
                     <li>LOG IN</li>
+                    </a>
+                    }
                 </ul>
             </div>
         </nav>
     </div>
     <div class="social">
         <div class="facebook">
-            <img src="~/Images/facebook.png" width="45px" height="45px" />
+            <a href="https://www.facebook.com/uochester" target="_blank">
+                <img src="~/Images/facebook.png" width="45px" height="45px" />
+            </a>
         </div>
         <div class="instagram">
-            <img src="~/Images/instagram.png" width="45px" height="45px" />
+            <a href="https://www.instagram.com/uochester/" target="_blank">
+                <img src="~/Images/instagram.png" width="45px" height="45px" />
+            </a>
         </div>
         <div class="twitter">
-            <img src="~/Images/twitter.png" width="45px" height="45px" />
+            <a href="https://twitter.com/uochester" target="_blank">
+                <img src="~/Images/twitter.png" width="45px" height="45px" />
+            </a>
         </div>
     </div>
     <main>
@@ -45,16 +79,22 @@
     <div class="spacermiddle"></div>
     <div class="footersocial">
         <div class="footer-fb">
-            <img src="~/Images/facebook.png" width="35px" height="35px" />
-            <p> - Facebook Link</p>
+            <a href="https://www.facebook.com/uochester" target="_blank">
+                <img src="~/Images/facebook.png" width="35px" height="35px" />
+                <p> - Facebook Link</p>
+            </a>
         </div>
         <div class="footer-ig">
-            <img src="~/Images/instagram.png" width="35px" height="35px" />
-            <p> - Instagram Link</p>
+            <a href="https://www.instagram.com/uochester/" target="_blank">
+                <img src="~/Images/instagram.png" width="35px" height="35px" />
+                <p> - Instagram Link</p>
+            </a>
         </div>
         <div class="footer-tt">
-            <img src="~/Images/twitter.png" width="35px" height="35px" />
-            <p> - Twitter Link</p>
+            <a href="https://twitter.com/uochester" target="_blank">
+                <img src="~/Images/twitter.png" width="35px" height="35px" />
+                <p> - Twitter Link</p>
+            </a>
         </div>
     </div>
     <div class="footercontact">
