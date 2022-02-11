@@ -441,3 +441,11 @@ button:hover {
 .confirmationmessage p{
     text-align: center;
 }
+
+.editform{
+    margin-left: 75px;
+}
+
+.editform div{
+    margin-bottom: 10px;
+}
