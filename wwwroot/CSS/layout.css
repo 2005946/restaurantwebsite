@@ -112,6 +112,8 @@ nav {
 
 
 /*Hyperlinks made by the use of bullet points and lists*/
+
+/*code adapted from https://tobiasahlin.com/blog/css-trick-animating-link-underlines/ */
 .menu ul li {
     position: relative;
     margin: 0 auto;
@@ -153,6 +155,7 @@ nav {
 .menu ul li:hover::before {
     transform: scaleX(1);
 }
+/*End of adapted code*/
 
 .menu ul li:nth-child(3) {
     font-size: 42px;

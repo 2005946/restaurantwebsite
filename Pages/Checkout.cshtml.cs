@@ -80,8 +80,24 @@ namespace RestaurantWebsite.Pages
         }
         public async Task<IActionResult> OnPostMoreAsync(int StockID)
         {
+            var currentOrder = _db.OrderHistories.FromSqlRaw("SELECT * FROM OrderHistories").OrderByDescending(b => b.OrderNo).FirstOrDefault();
+            if (currentOrder == null)
+            {
+                Order.OrderNo = 1;
+            }
+            else
+            {
+                Order.OrderNo = currentOrder.OrderNo + 1;
+            }
+            var user = await _userManager.GetUserAsync(User);
+            Order.Email = user.Email;
+            _db.OrderHistories.Add(Order);
 
-            var basketItem = await _db.BasketItems.FindAsync(StockID);
+            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
+
+            var basketItems = _db.BasketItems.FromSqlRaw("SELECT * FROM BasketItems WHERE BasketID = {0}", customer.BasketID).ToList();
+
+            var basketItem = await _db.BasketItems.FindAsync(StockID, customer.BasketID);
             basketItem.Quantity += 1;
             _db.Attach(basketItem).State = EntityState.Modified;
             try
@@ -97,8 +113,38 @@ namespace RestaurantWebsite.Pages
 
         public async Task<IActionResult> OnPostLessAsync(int StockID)
         {
-            var basketItem = await _db.BasketItems.FindAsync(StockID);
-            basketItem.Quantity -= 1;
+            var currentOrder = _db.OrderHistories.FromSqlRaw("SELECT * FROM OrderHistories").OrderByDescending(b => b.OrderNo).FirstOrDefault();
+            if (currentOrder == null)
+            {
+                Order.OrderNo = 1;
+            }
+            else
+            {
+                Order.OrderNo = currentOrder.OrderNo + 1;
+            }
+            var user = await _userManager.GetUserAsync(User);
+            Order.Email = user.Email;
+            _db.OrderHistories.Add(Order);
+
+            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
+
+            var basketItems = _db.BasketItems.FromSqlRaw("SELECT * FROM BasketItems WHERE BasketID = {0}", customer.BasketID).ToList();
+
+            var basketItem = await _db.BasketItems.FindAsync(StockID, customer.BasketID);
+            if (basketItem.Quantity == 1){
+                try {
+                    _db.BasketItems.FromSqlRaw("DELETE FROM BasketItems WHERE StockID = {0} AND BasketID = {1}", StockID, customer.BasketID).ToList();
+                }
+                catch
+                {
+                    return RedirectToPage("/Checkout");
+                }
+                
+            }
+            else if (basketItem.Quantity >=1)
+            {
+                basketItem.Quantity -= 1;        
+            }
             _db.Attach(basketItem).State = EntityState.Modified;
             try
             {
