@@ -11,7 +11,16 @@
     <form method="post">
         <h2>Search</h2>
         <div class="search"><input asp-for="Search" /></div>
-        <button type="submit" asp-page-handler="Search">Search</button>
+        <div class="searchbutton">
+            <button type="submit" asp-page-handler="Search">Search</button>
+            <a asp-page="/Menu">
+                <button type="button">See as customer</button>
+            </a>
+            <a asp-page="/Admin/Create">
+                <button type="button">Add new item</button>
+            </a>
+        </div>
+        <hr/>
         <table class="menutable">
             <tbody>
 

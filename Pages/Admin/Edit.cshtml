@@ -9,9 +9,11 @@
 
 <div id="container">
     <h2>Edit Item - @Model.menu.mealName</h2>
+    <hr />
     <form method="post" enctype="multipart/form-data">
         <input asp-for="menu.mealID" type="hidden" />
-        <input asp-for="menu.Active" type ="hidden">
+        <input asp-for="menu.Active" type="hidden" />
+        <input asp-for="menu.ImageData" type="hidden" />
 
         <div asp-validation-summary="All"></div>
         <div>Meal Name: <input asp-for="menu.mealName" /></div>
@@ -21,12 +23,7 @@
         <div>Vegan: <input asp-for="menu.mealIsVegan" /></div>
         <div>Contains Nuts: <input asp-for="menu.mealContainsNuts" /></div>
         <div>Meal Description: <input asp-for="menu.mealDescription" /></div>
-        <div>
-            Upload Image:<br />
-            <input type="file" id="file1"
-                   name="file1"
-                   multiple="multiple"/>
-        </div>
+        <div>Upload Image:<input asp-for="menu.ImageData" type="file" id="file1" name="file1" multiple="multiple" /></div>
         <div>Image Description <input asp-for="menu.ImageDescription" /></div>
         <div>
             <button type="submit" asp-page-handler="Save">Save</button>

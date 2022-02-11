@@ -5,6 +5,11 @@
     Layout = "~/Pages/_Layout.cshtml";
 }
 
+@using Microsoft.AspNetCore.Identity
+@using RestaurantWebsite.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <link rel="stylesheet" href="~/CSS/menu.css">
 
 <div id="container">
@@ -13,63 +18,87 @@
         <div class="search">
             <input asp-for="Search" />
         </div>
-        <button type="submit" asp-page-handler="Search">Search</button>
-    </form>
-    <table class="menutable">
-        <tbody>
-            @foreach (var menu in Model.tblMenu)
+        <div class="searchbutton">
+            <button type="submit" asp-page-handler="Search">Search</button>
+            @if (User.IsInRole("Admin"))
             {
-                if (@menu.Active == false){
-
-                }
-                else
-                {
-                    <tr>
-                        <td>@menu.mealName</td>
-                        @{
-                            try
-                            {
-                                <td>
-                                    <img class="mealImage" src="@string.Format("data:Image/jpg;base64,{0}",Convert.ToBase64String(menu.ImageData))" , alt="@menu.ImageDescription" />
-                                </td>
-                            }
-                            catch
-                            {
-                                <td>
-                                    <img class="emptyimage" src="~/Images/empty.png" alt="No Image available" />
-                                </td>
-                            }
-                        }
-                        <td>@menu.mealIngredients</td>
-                        @if (menu.mealIsGlutenFree == true)
-                        {
-                            <td>Gluten Free</td>
-                        }
-                        else
-                        {
-                            <td></td>
-                        }
-                        @if (menu.mealIsVegan == true)
-                        {
-                            <td>Suitable for Vegans</td>
-                        }
-                        else
-                        {
-                            <td></td>
-                        }
-                        @if (menu.mealContainsNuts == true)
-                        {
-                            <td>Contains Nuts</td>
-                        }
-                        else
-                        {
-                            <td></td>
-                        }
-                        <td>£@menu.mealPrice.ToString("0.00")</td>
-                    </tr> 
-                }
+                <a asp-page="/Admin/Menu">
+                    <button type="button">See as Admin</button>
+                </a>
             }
-        </tbody>
-    </table>
+            <a asp-page="/Checkout">
+                <button type="button">Basket</button>
+            </a>
+        </div>
+        <hr />
+        <table class="menutable">
+            <tbody>
+                @foreach (var menu in Model.tblMenu)
+                {
+                    if (@menu.Active == false)
+                    {
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>@menu.mealName</td>
+                            @{
+                                try
+                                {
+                                    if (menu.ImageData == null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <img class="mealImage" src="@string.Format("data:Image/jpg;base64,{0}",Convert.ToBase64String(menu.ImageData))" , alt="@menu.ImageDescription" />
+                                        </td>
+                                    }
+                                }
+                                catch
+                                {
+                                    <td>
+                                        <img class="emptyimage" src="~/Images/empty.png" alt="No Image available" />
+                                    </td>
+                                }
+                            }
+                            <td>@menu.mealIngredients</td>
+                            @if (menu.mealIsGlutenFree == true)
+                            {
+                                <td>Gluten Free</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            @if (menu.mealIsVegan == true)
+                            {
+                                <td>Suitable for Vegans</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            @if (menu.mealContainsNuts == true)
+                            {
+                                <td>Contains Nuts</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            <td>£@menu.mealPrice.ToString("0.00")</td>
+                            <td>
+                                <button type="submit" asp-page-handler="Buy" asp-route-mealID="@menu.mealID">Add to basket</button>
+                            </td>
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+    </form>
 </div>
 

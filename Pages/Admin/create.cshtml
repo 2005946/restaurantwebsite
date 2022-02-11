@@ -8,21 +8,21 @@
 <link rel="stylesheet" href="~/CSS/menu.css">
 
 <div id="container">
+    <h2>Create a new item</h2>
+    <hr />
     <form method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="All"></div>
-        <div>Meal Name: <input asp-for="MenuItem.mealName" /></div>
-        <div>Meal Ingredients: <input asp-for="MenuItem.mealIngredients" /></div>
-        <div>Meal Price: <input asp-for="MenuItem.mealPrice" /></div>
-        <div>Gluten Free: <input asp-for="MenuItem.mealIsGlutenFree" /></div>
-        <div>Vegan: <input asp-for="MenuItem.mealIsVegan" /></div>
-        <div>Contains Nuts: <input asp-for="MenuItem.mealContainsNuts" /></div>
-        <div>Meal Description: <input asp-for="MenuItem.mealDescription" /></div>
-        <div>Upload Image:<br />
-            <input type="file" id="file1"
-                   name="file1"
-                   multiple="multiple"/>
+        <div class="inputboxes">
+            <div asp-validation-summary="All"></div>
+            <div>Meal Name: <input asp-for="MenuItem.mealName" /></div>
+            <div>Meal Ingredients: <input asp-for="MenuItem.mealIngredients" /></div>
+            <div>Meal Price: <input asp-for="MenuItem.mealPrice" /></div>
+            <div>Gluten Free: <input asp-for="MenuItem.mealIsGlutenFree" /></div>
+            <div>Vegan: <input asp-for="MenuItem.mealIsVegan" /></div>
+            <div>Contains Nuts: <input asp-for="MenuItem.mealContainsNuts" /></div>
+            <div>Meal Description: <input asp-for="MenuItem.mealDescription" /></div>
+            <div>Upload Image:<input type="file" id="file1" name="file1" multiple="multiple" /></div>
+            <div>Image Description <input asp-for="MenuItem.ImageDescription" /></div>
+            <input type="submit" />
         </div>
-        <div>Image Description <input asp-for="MenuItem.ImageDescription" /></div>
-        <input type="submit"/>
     </form>
 </div>

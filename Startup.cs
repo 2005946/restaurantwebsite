@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RestaurantWebsite.Data;
 using Microsoft.AspNetCore.Identity;
+using Stripe;
 
 namespace WebApplication1
 {
@@ -35,10 +36,11 @@ namespace WebApplication1
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = new PathString("/Account/Login");
-                options.AccessDeniedPath = new PathString("/Account/");
+                options.AccessDeniedPath = new PathString("/Account/AccessDenied");
                 options.LogoutPath = new PathString("/Index");
             }
             );
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,7 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             CreateRoles(serviceProvider).Wait();
             app.UseHttpsRedirection();
             app.UseRouting();

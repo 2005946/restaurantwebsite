@@ -7,8 +7,8 @@ html::-webkit-scrollbar {
 body {
     margin: 0;
     height: auto;
-    max-height: auto;
     background: rgba(0,0,0,0.98) url('Images/background.jpg') no-repeat fixed center;
+    background-size: cover;
 }
 
 .background {
@@ -64,6 +64,11 @@ a {
     transition: transform 0.15s ease-in-out;
 }
 
+.logo img {
+    width: 164px;
+    height: 125px;
+}
+
 .logo:hover {
     transform: scale(1.1); 
     transition: transform 0.15s ease-in-out;
@@ -83,7 +88,14 @@ nav {
     transition: transform 0.15s ease-in-out;
 }
 
-@media only screen and (max-width: 1450px) {
+@media only screen and (max-width: 1615px) {
+    .menu {
+        transform: translate(150px,20px);
+        transition: transform 0.15s ease-in-out;
+    }
+}
+
+@media only screen and (max-width: 1365px) {
     .menu {
         transform: translate(0px,20px);
         transition: transform 0.15s ease-in-out;
@@ -92,11 +104,10 @@ nav {
 
 @media only screen and (max-width: 800px) {
     .menu {
-        transform: translate(0px,39px);
+        transform: translate(0px,38px);
         transition: transform 0s ease-in-out;
     }
 }
-
 
 
 
@@ -203,7 +214,7 @@ nav {
     transition: transform 0.15s ease-in-out;
 }
 
-@media only screen and (max-width: 666px) {
+@media only screen and (max-width: 740px) {
     .social {
         display: none;
     }
@@ -217,6 +228,12 @@ nav {
     transform: scale(1.2);
     transition: transform 0.15s ease-in-out;
 }
+
+.facebook img {
+    width: 45px;
+    height: 45px;
+}
+
 .instagram {
     margin-left: 20px;
     display: inline-block;
@@ -226,6 +243,12 @@ nav {
     transform: scale(1.2);
     transition: transform 0.15s ease-in-out;
 }
+
+.instagram img {
+    width: 45px;
+    height: 45px;
+}
+
 .twitter {
     margin-left: 20px;
     display: inline-block;
@@ -234,6 +257,11 @@ nav {
 .twitter:hover {
     transform: scale(1.2);
     transition: transform 0.15s ease-in-out;
+}
+
+.twitter img {
+    width: 45px;
+    height: 45px;
 }
 
 main{
@@ -253,25 +281,114 @@ footer {
     border-bottom: 45px solid rgba(0,0,0,0.95);
 }
 
-.spacermiddle {
-    float: left;
-    margin-left: 980px;
+.footercontainer{
+    margin-left: 75px;
+}
+
+.footerlogo {
+    width: 334px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 20px;
+
+}
+
+.footerlogo img {
+    margin-bottom: 50px;
+    margin-left: 10%;
+    width: 250px;
+    transition: transform 0.15s ease-in-out;
+}
+
+.footerlogo img:hover {
+    transform-origin: center;
+    transform: scale(1.1);
+    transition: transform 0.15s ease-in-out;
+}
+
+.spacerleft {
+    display: inline-block;
     height: 330px;
     width: 2px;
-    transform: translate(0,-7px);
+    transform: translate(0,7px);
     background-color: rgba(255,255,255,1);
 }
 
-@media only screen and (max-width: 1800px) {
+
+.containerfooterlinks {
+    display: inline-block;
+    width: 334px;
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-bottom: 50px;
+    transform: translate(-5px,-90px);
+}
+.footerlinks a {
+    margin-left: 40%;
+    display: block;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,1);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    transition: transform 0.15s ease-in-out;
+}
+
+.footerlinks a:hover {
+    color:rgba(255,0,0,1);
+    transition: transform 0.15s ease-in-out;
+}
+
+.spacermiddle {
+    display: inline-block;
+    height: 330px;
+    width: 2px;
+    transform: translate(0,7px);
+    background-color: rgba(255,255,255,1);
+}
+
+@media only screen and (max-width: 892px) {
     .spacermiddle {
         display: none;
     }
+    .spacerleft {
+        display: none;
+    }
+
+    .footercontainer{
+        margin: 0;
+    }
+
+    .footerlogo img {
+        display: block;
+        transform-origin: center;
+        transform: translate(0%,0);
+    }
+    .footerlogo img:hover {
+        transform-origin: center;
+        transform: scale(1.1);
+        transition: transform 0.15s ease-in-out;
+    }
+    .containerfooterlinks {
+        display: block;
+        transform: translate(0%,0);
+        
+    }
+
+    .containersocialcontact {
+        display: block;
+    }
+
+    .googlemaps {
+        display: block;
+    }
 }
 
+
 .footersocial {
-    float: left;
+    display: block;
+    margin-bottom: 20px;
     border-radius: 15px;
-    margin-left: -298px;
     border: 2px solid #FFF;
     padding: 10px 10px 10px 10px;
     width: 333px;
@@ -279,7 +396,6 @@ footer {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 14px;
-    transform: translate(357px,0);
 }
 
 .footer-fb {
@@ -291,7 +407,7 @@ footer {
     float: right;
     color: white;
     display: inline-block;
-    margin-right: 180px;
+    margin-right: 110px;
     margin-bottom: 0px;
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
@@ -305,6 +421,11 @@ footer {
     transition: ease-in-out 0.15s;
 }
 
+.footer-fb img {
+    width: 35px; 
+    height: 35px;
+}
+
 .footer-ig {
     margin-bottom: 6px;
     transition: ease-in-out 0.15s;
@@ -314,7 +435,7 @@ footer {
     float: right;
     color: white;
     display: inline-block;
-    margin-right: 177px;
+    margin-right: 102px;
     margin-bottom: 0px;
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
@@ -328,6 +449,10 @@ footer {
     transform: scale(1.1) translate(13px,0);
 }
 
+.footer-ig img {
+    width: 35px;
+    height: 35px;
+}
 
 .footer-tt {
     transition: ease-in-out 0.15s;
@@ -337,7 +462,7 @@ footer {
     float: right;
     color: white;
     display: inline-block;
-    margin-right: 200px;
+    margin-right: 124px;
     margin-bottom: 0px;
     transform: translate(0px,-5px);
     user-select: none; /* supported by Chrome and Opera */
@@ -351,10 +476,22 @@ footer {
     transform: scale(1.1) translate(13px,0);
 }
 
+.footer-tt img {
+    width: 35px;
+    height: 35px;
+}
+
+.containersocialcontact {
+    display: inline-block;
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-bottom: 17px;
+    transform: translate(0,-20px);
+}
+
 .footercontact {
-    float: left;
+    display: block;
     border-radius: 15px;
-    margin-top: 168px;
     border: 2px solid #FFF;
     padding: 10px 10px 10px 10px;
     width: 333px;
@@ -362,8 +499,6 @@ footer {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 14px;
-    margin-bottom: 20px;
-    margin-right: 0px;
 }
 
 .footercontact p {
@@ -379,6 +514,11 @@ footer {
     margin-bottom: 6px;
 }
 
+.footer-mail img {
+    width: 35px;
+    height: 35px;
+}
+
 .footer-mail p {
     float: right;
     color: white;
@@ -392,6 +532,11 @@ footer {
     margin-bottom: 6px;
 }
 
+.footer-phone img{
+    width: 35px;
+    height: 35px;
+}
+
 .footer-phone p {
     float: right;
     color: white;
@@ -402,44 +547,50 @@ footer {
 }
 
 .spacerright {
-    float: left;
-    margin-left: 50px;
-    margin-right: 0;
+    display: inline-block;
     height: 330px;
     width: 2px;
-    transform: translate(0,-7px);
+    transform: translate(0,7px);
     background-color: rgba(255,255,255,1);
 }
 
-@media only screen and (max-width: 1852px) {
+@media only screen and (max-width: 1284px) {
     .spacerright {
-        display:none;
+        display: none;
     }
-
 }
+
 
 .googlemaps {
+    display: inline-block;
     position: relative;
-    margin-left: 1518px;
+    margin-left: 35px;
     border-radius: 15px;
     border: 2px solid #FFF;
-    width: 333px;
+    width: 334px;
     padding: 0px 10px 5px 10px;
+    transform: translate(0,-14px);
 }
 
+.googlemaps iframe {
+    width: 333px;
+    height: 250px;
+}
 .googlemaps p {
     color: #FFF;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
 }
 
-@media only screen and (max-width: 837px) {
-    .googlemaps {
-        position: relative;
-        margin-left: 59px;
-        
-    }
+.footercopyright {
+    text-align: center;
+    color: white;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
+
+
 
 
 

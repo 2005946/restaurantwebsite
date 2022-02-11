@@ -24,11 +24,12 @@
 .ordernow:hover {
     transition: ease-in-out 0.15s;
     transform: scale(1.1);
+    transform-origin: center;
 }
 
 .ordernow:hover p {
+    transform-origin: center;
     transition: ease-in-out 0.15s;
-    transform: translate(0,-39px);
 }
 
 .ordernow p {

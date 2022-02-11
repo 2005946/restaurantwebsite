@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -38,6 +39,14 @@ namespace RestaurantWebsite.Pages.Admin
             _db.Attach(menu).State = EntityState.Modified;
             try
             {
+                foreach (var file in Request.Form.Files)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    file.CopyTo(ms);
+                    menu.ImageData = ms.ToArray();
+                    ms.Close();
+                    ms.Dispose();
+                }
                 await _db.SaveChangesAsync();
             }
             catch(DbUpdateConcurrencyException e)

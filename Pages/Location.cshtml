@@ -1,0 +1,33 @@
+﻿@page
+@model RestaurantWebsite.Pages.LocationModel
+@{
+    ViewData["Title"] = "Location";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/CSS/menu.css">
+
+<div id="container">
+    <h2>Location</h2>
+    <hr />
+    <div class="address">
+        <p>
+            University of Chester
+            <br />
+            Exton Campus
+            <br />
+            Parkgate Rd
+            <br />
+            Chester
+            <br />
+            CH1 4BJ
+            <br />
+        </p>
+    </div>
+    <div class="containerspacer"></div>
+    <div class="containergooglemaps">
+        <p>Google Maps Location Pin</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.979677128564!2d-2.902007984167059!3d53.20028067994866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487add4c5264e8f9%3A0xb15819ede08133ab!2sUniversity%20of%20Chester!5e0!3m2!1sen!2suk!4v1638541959009!5m2!1sen!2suk" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>

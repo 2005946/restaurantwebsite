@@ -1,7 +1,7 @@
 ﻿@page
 @model RestaurantWebsite.Pages.Account.UserModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "User";
     Layout = "~/Pages/_Layout.cshtml";
 }
 
@@ -25,6 +25,11 @@
                 <b>User Role: </b>Admin
             </label>
             }
+            @if(User.IsInRole("Member")){
+            <label>
+                <b>User Role: </b>Member
+            </label>
+            }
             @if(!User.IsInRole("Admin") && !User.IsInRole("Member")){
             <label>
                 <b>User Role: </b>Member
@@ -35,7 +40,7 @@
         </div>
         <form method="post">
             <div class="logout">
-                <button type="submit">Logout</button>
+                <button type="submit">LOGOUT</button>
             </div>
         </form>
 </div>

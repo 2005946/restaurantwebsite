@@ -4,9 +4,8 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1"/>
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/CSS/layout.css">
 </head>
@@ -14,7 +13,7 @@
     <div class="top-bar">
         <div class="logo">
             <a asp-page="/Index">
-                <img src="~/Images/logo.png" width="164px" height="125px" />
+                <img src="~/Images/logo.png" alt="The Logo Cafe"/>
             </a>
         </div>
         <nav>
@@ -35,9 +34,13 @@
                     <li>MENU</li>
                     </a>
                     }
+                    <a asp-page="/Location">
                     <li>LOCATION</li>
+                    </a>
                     <li>|</li>
-                    <li>CONTACT</li>
+                    <a asp-page="/Contact">
+                        <li>CONTACT</li>
+                    </a>
                     <li>|</li>
                     @if (SignInManager.IsSignedIn(User))
                     {
@@ -58,61 +61,116 @@
     <div class="social">
         <div class="facebook">
             <a href="https://www.facebook.com/uochester" target="_blank">
-                <img src="~/Images/facebook.png" width="45px" height="45px" />
+                <img alt="facebook" src="~/Images/facebook.png"/>
             </a>
         </div>
         <div class="instagram">
             <a href="https://www.instagram.com/uochester/" target="_blank">
-                <img src="~/Images/instagram.png" width="45px" height="45px" />
+                <img alt="instagram" src="~/Images/instagram.png"/>
             </a>
         </div>
         <div class="twitter">
             <a href="https://twitter.com/uochester" target="_blank">
-                <img src="~/Images/twitter.png" width="45px" height="45px" />
+                <img alt="twitter" src="~/Images/twitter.png"/>
             </a>
         </div>
     </div>
     <main>
         @RenderBody()
     </main>
-<footer>
-    <div class="spacermiddle"></div>
-    <div class="footersocial">
-        <div class="footer-fb">
-            <a href="https://www.facebook.com/uochester" target="_blank">
-                <img src="~/Images/facebook.png" width="35px" height="35px" />
-                <p> - Facebook Link</p>
-            </a>
+    <footer>
+        <div class="footercontainer">
+            <div class="footerlogo">
+                <a asp-page="/Index">
+                    <img alt="The logo cafe"src="~/Images/logo.png" />
+                </a>
+            </div>
+            <div class="spacerleft"></div>
+            <div class="containerfooterlinks">
+                <div class="footerlinks">
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <a asp-page="/Admin/Menu">
+                        MENU
+                    </a>
+                    }
+                    @if (User.IsInRole("Member"))
+                    {
+                    <a asp-page="/Menu">
+                        MENU
+                    </a>
+                    }
+                    @if (!User.IsInRole("Admin") && !User.IsInRole("Member"))
+                    {
+                    <a asp-page="/Menu">
+                        MENU
+                    </a>
+                    }
+                    <a asp-page="/Location">
+                        LOCATION
+                    </a>
+                    <a asp-page="/Contact">
+                        CONTACT
+                    </a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                    <a asp-page="/Account/User">
+                        @UserManager.GetUserName(User)
+                    </a>
+                    }
+                    else
+                    {
+                    <a asp-page="/Account/Login">
+                        LOG IN
+                    </a>
+                    }
+                </div>
+            </div>
+            <div class="spacermiddle"></div>
+            <div class="containersocialcontact">
+                <div class="footersocial">
+                    <div class="footer-fb">
+                        <a href="https://www.facebook.com/uochester" target="_blank">
+                            <img alt="facebook" src="~/Images/facebook.png"/>
+                            <p> - facebook.com/uochester</p>
+                        </a>
+                    </div>
+                    <div class="footer-ig">
+                        <a href="https://www.instagram.com/uochester/" target="_blank">
+                            <img alt="instagram" src="~/Images/instagram.png"/>
+                            <p> - instagram.com/uochester</p>
+                        </a>
+                    </div>
+                    <div class="footer-tt">
+                        <a href="https://twitter.com/uochester" target="_blank">
+                            <img alt="twitter" src="~/Images/twitter.png"/>
+                            <p> - twitter.com/uochester</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="footercontact">
+                    <p>Contact Us</p>
+                    <div class="footer-mail">
+                        <img alt="email" src="~/Images/email.png"/>
+                        <p> - restaurant@email.com</p>
+                    </div>
+                    <div class="footer-phone">
+                        <img alt="phone" src="~/Images/phone.png"/>
+                        <p> - +447700000000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="spacerright"></div>
+            <div class="googlemaps">
+                <p>Google Maps Location Pin</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.979677128564!2d-2.902007984167059!3d53.20028067994866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487add4c5264e8f9%3A0xb15819ede08133ab!2sUniversity%20of%20Chester!5e0!3m2!1sen!2suk!4v1638541959009!5m2!1sen!2suk" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="footercopyright">
+                <p>&copy; Fictional website for educational purposes</p>
+                <a href="http://validator.w3.org/check?uri=https://2005946.win.studentwebserver.co.uk">Validate HTML</a>
+                <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://2005946.win.studentwebserver.co.uk">Validate CSS</a>
+            </div>
         </div>
-        <div class="footer-ig">
-            <a href="https://www.instagram.com/uochester/" target="_blank">
-                <img src="~/Images/instagram.png" width="35px" height="35px" />
-                <p> - Instagram Link</p>
-            </a>
-        </div>
-        <div class="footer-tt">
-            <a href="https://twitter.com/uochester" target="_blank">
-                <img src="~/Images/twitter.png" width="35px" height="35px" />
-                <p> - Twitter Link</p>
-            </a>
-        </div>
-    </div>
-    <div class="footercontact">
-        <p>Contact Us</p>
-        <div class="footer-mail">
-            <img src="~/Images/email.png" width="35px" height="35px" />
-            <p> - restaurant@email.com</p>
-        </div>
-        <div class="footer-phone">
-            <img src="~/Images/phone.png" width="35px" height="35px" />
-            <p> - +447700000000</p>
-        </div>
-    </div>
-    <div class="spacerright"></div>
-    <div class="googlemaps">
-        <p>Google Maps Location Pin</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.979677128564!2d-2.902007984167059!3d53.20028067994866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487add4c5264e8f9%3A0xb15819ede08133ab!2sUniversity%20of%20Chester!5e0!3m2!1sen!2suk!4v1638541959009!5m2!1sen!2suk" width="333" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
