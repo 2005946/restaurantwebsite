@@ -176,7 +176,7 @@ namespace RestaurantWebsite.Pages
                 Customer = customer.Id
             });
             Checkout().Wait();
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Confirmation");
         }
     }
 }

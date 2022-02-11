@@ -15,60 +15,70 @@
     <hr />
     <form method="post">
         <div class="checkouttable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Items)
-                    {
-                        var subtotal = item.mealPrice * item.Quantity;
-                        <tr>
-                            <td>
-                                <div class="mealname">
-                                    @item.mealName
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mealprice">
-                                    @item.mealPrice.ToString("C")
-                                </div>
-                            </td>
-                            <td>
-                                <div class="quantity">
-                                    <button type="submit" asp-page-handler="More" asp-route-StockID="@item.mealID">+</button>@item.Quantity<button type="submit" asp-route-StockID="@item.mealID" asp-page-handler="Less">-</button>
-                                </div>
-                            </td>
-                            <td>@subtotal.ToString("C")</td>
-                        </tr>
-                    }
-
-                </tbody>
-            </table>
             @if (Model.Items == null || Model.Items.Count == 0)
             {
                 <div class="emptybasket">
                     Your basket is empty
                 </div>
             }
-            <div class="total"> Total = @Model.Total.ToString("C")</div>
+            else
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            var subtotal = item.mealPrice * item.Quantity;
+                            <tr>
+                                <td>
+                                    <div class="mealname">
+                                        @item.mealName
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="mealprice">
+                                        @item.mealPrice.ToString("C")
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="quantity">
+                                        <button type="submit" asp-page-handler="More" asp-route-StockID="@item.mealID">+</button>@item.Quantity<button type="submit" asp-route-StockID="@item.mealID" asp-page-handler="Less">-</button>
+                                    </div>
+                                </td>
+                                <td>@subtotal.ToString("C")</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                <div class="total"> Total = @Model.Total.ToString("C")</div>
+            }
         </div>
     </form>
-    <div class="stripe-button">
-        <form asp-page-handler="Charge" asp-route-amount="@Model.AmountPayabale" method="post">
-            <script src="//checkout.stripe.com/v2/checkout.js"
-                    class="stripe-button"
-                    data-key="@Stripe.Value.PublishableKey"
-                    data-locale="auto"
-                    data-description="The Logo Cafe Charge"
-                    data-amount="@Model.AmountPayabale"
-                    data-currency="GBP">
-            </script>
-        </form>
-    </div>
+    @if (Model.Items == null || Model.Items.Count == 0)
+    {
+
+    }
+    else
+    {
+        <div class="stripe-button">
+            <form asp-page-handler="Charge" asp-route-amount="@Model.AmountPayabale" method="post">
+                <script src="//checkout.stripe.com/v2/checkout.js"
+                        class="stripe-button"
+                        data-key="@Stripe.Value.PublishableKey"
+                        data-locale="auto"
+                        data-description="The Logo Cafe Charge"
+                        data-amount="@Model.AmountPayabale"
+                        data-currency="GBP">
+                </script>
+            </form>
+        </div>
+    }
 </div>
